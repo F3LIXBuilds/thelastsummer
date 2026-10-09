@@ -1,0 +1,24 @@
+{
+  "name": "the-last-summer",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "db:init": "node database/init.js",
+    "stories:import": "node server/scripts/import-stories.js",
+    "admin:promote": "node server/scripts/promote-admin.js",
+    "validate:stories": "node shared/story/validate.js",
+    "story:export": "node shared/story/cli.js export",
+    "story:build": "node shared/story/cli.js build"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "id": "ep1",
+  "title": "Welcome Back to Lagos",
+  "start": "arrival",
+  "scenes": [
+    { "id": "arrival", "steps": [
+      { "type": "music", "track": "lagos_evening" },
+      { "type": "bg", "name": "obalende_busstop" },
+      { "type": "camera", "effect": "fade", "to": "clear" },
+      { "type": "sfx", "name": "horn" },
+      { "type": "narrate", "text": "Obalende, 6:47 p.m. The danfo hisses to a stop and Lagos hits you all at once: horns, plantain smoke, a conductor chanting destinations like a prayer." },
+      { "type": "narrate", "text": "Four years abroad. Nine days since Grandma Abeni was buried without you." },
+      { "type": "show", "char": "player", "position": "left", "expression": "nervous" },
+      { "type": "show", "char": "adaeze", "position": "right", "expression": "happy", "enter": "right" },
+      { "type": "say", "char": "adaeze", "expression": "happy", "text": "{name}!! Oya, come here! Four years and you still stand like somebody waiting for permission." },
+      { "type": "choice", "id": "greeting", "prompt": "Adaeze is already running toward you.", "options": [
+        { "id": "hug", "text": "Drop your bag and hug her tight.", "summary": "You hugged Adaeze like no time had passed.",
+          "effects": [ { "type": "rel", "char": "adaeze", "stat": "friendship", "delta": 8 }, { "type": "rel", "char": "adaeze", "stat": "romance", "delta": 2 } ],
+          "then": [ { "type": "expr", "char": "player", "expression": "happy" }, { "type": "say", "char": "adaeze", "expression": "embarrassed", "text": "Okay, okay! People are looking. This is Obalende, not a Nollywood airport scene." } ] },
+        { "id": "tease", "text": "\"You're late. Typical.\"", "summary": "You teased Adaeze the moment you saw her.",
+          "effects": [ { "type": "rel", "char": "adaeze", "stat": "friendship", "delta": 3 }, { "type": "rel", "char": "adaeze", "stat": "romance", "delta": 4 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "confident", "text": "You're late. Typical." }, { "type": "say", "char": "adaeze", "expression": "confident", "text": "Late? I have been here since the last time you ignored my calls. Carry your bag." } ] },
+        { "id": "cold", "text": "Glance at your phone. Barely look up.", "summary": "You barely looked up when Adaeze came to meet you.",
+          "effects": [ { "type": "rel", "char": "adaeze", "stat": "friendship", "delta": -5 }, { "type": "rel", "char": "adaeze", "stat": "trust", "delta": -2 } ],
+          "then": [ { "type": "say", "char": "adaeze", "expression": "sad", "text": "Ah. So this is how it is." }, { "type": "narrate", "text": "She takes your bag anyway. That's the worst part." } ] }
+      ] },
+      { "type": "jump", "scene": "suya" }
+    ] },
+
+    { "id": "suya", "steps": [
+      { "type": "camera", "effect": "fade", "to": "black", "wait": 700 },
+      { "type": "hide", "char": "adaeze" }, { "type": "hide", "char": "player" },
+      { "type": "bg", "name": "suya_spot" },
+      { "type": "camera", "effect": "fade", "to": "clear" },
+      { "type": "show", "char": "player", "position": "left", "expression": "happy" },
+      { "type": "show", "char": "adaeze", "position": "center", "expression": "happy" },
+      { "type": "narrate", "text": "Mama Kudi's suya spot, off Awolowo Road. Same plastic stools. Same smoke. Same pepper that makes your eyes remember everything." },
+      { "type": "say", "char": "adaeze", "text": "Two portions, Mama! Extra yaji! My friend has been eating foreign suya. That one is not suya, that is barbecue with an identity crisis." },
+      { "type": "say", "char": "player", "expression": "happy", "text": "I missed this. All of it. Even the pepper wahala." },
+      { "type": "say", "char": "adaeze", "expression": "nervous", "text": "{name}... before we eat. It's about Grandma's house." },
+      { "type": "say", "char": "adaeze", "expression": "sad", "text": "Surveyors keep coming. Men with clipboards. And last week, somebody cut the padlock off the boat house." },
+      { "type": "sfx", "name": "car" },
+      { "type": "camera", "effect": "shake" },
+      { "type": "show", "char": "tunde", "position": "right", "expression": "confident", "enter": "right" },
+      { "type": "say", "char": "tunde", "text": "{name}. Welcome home. I'm sorry about Grandma Abeni. Truly." },
+      { "type": "say", "char": "adaeze", "expression": "angry", "text": "Tunde. Not tonight." },
+      { "type": "say", "char": "tunde", "expression": "neutral", "text": "I came with respect. My father wants to make your family an offer for the property. A fair one. More than fair." },
+      { "type": "narrate", "text": "He slides a cream envelope across the table, right beside the suya." },
+      { "type": "choice", "id": "offer", "prompt": "Everyone is watching you.", "options": [
+        { "id": "take", "text": "Take the envelope. Hear him out.", "summary": "You took the Bakare family's envelope.",
+          "effects": [ { "type": "item", "id": "bakare_offer" }, { "type": "flag", "key": "tookOffer" }, { "type": "rel", "char": "tunde", "stat": "trust", "delta": 3 }, { "type": "rel", "char": "adaeze", "stat": "trust", "delta": -8 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "nervous", "text": "Leave it with me. I'll read it." }, { "type": "say", "char": "adaeze", "expression": "sad", "text": "...Okay." } ] },
+        { "id": "refuse", "text": "Push it back. \"The house isn't for sale.\"", "summary": "You refused Tunde's offer on the spot.",
+          "effects": [ { "type": "flag", "key": "refusedOffer" }, { "type": "stat", "stat": "courage", "delta": 5 }, { "type": "rel", "char": "tunde", "stat": "rivalry", "delta": 10 }, { "type": "rel", "char": "adaeze", "stat": "trust", "delta": 6 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "angry", "text": "The house isn't for sale. Not to you, not to your father." }, { "type": "say", "char": "tunde", "expression": "surprised", "text": "You haven't even read it." } ] },
+        { "id": "question", "text": "\"Why is your father so desperate?\"", "summary": "You wondered aloud why the Bakares want the house so badly.",
+          "effects": [ { "type": "flag", "key": "suspectsBakare" }, { "type": "rel", "char": "tunde", "stat": "rivalry", "delta": 4 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "confident", "text": "Why is your father suddenly so desperate for a house nobody wanted last year?" }, { "type": "say", "char": "tunde", "expression": "nervous", "text": "Desperate? Nobody said desperate." } ] },
+        { "id": "together", "text": "Let Adaeze stand with you.", "requires": { "rel": "adaeze", "stat": "friendship", "op": ">=", "value": 25 }, "lockedHint": "You and Adaeze aren't close enough for this yet.",
+          "summary": "Adaeze stood beside you against Tunde.",
+          "effects": [ { "type": "rel", "char": "adaeze", "stat": "trust", "delta": 6 }, { "type": "rel", "char": "adaeze", "stat": "romance", "delta": 3 }, { "type": "rel", "char": "tunde", "stat": "rivalry", "delta": 6 } ],
+          "then": [ { "type": "move", "char": "adaeze", "position": "left" }, { "type": "narrate", "text": "Adaeze shifts her stool beside yours, shoulder to shoulder. She doesn't say a word. She doesn't need to." }, { "type": "say", "char": "tunde", "expression": "neutral", "text": "Two against one. Fine." } ] }
+      ] },
+      { "type": "say", "char": "tunde", "expression": "confident", "text": "Think it over. The offer expires at the end of the month." },
+      { "type": "hide", "char": "tunde", "exit": "right" },
+      { "type": "jump", "scene": "beach_house" }
+    ] },
+
+    { "id": "beach_house", "steps": [
+      { "type": "camera", "effect": "fade", "to": "black", "wait": 800 },
+      { "type": "hide", "char": "adaeze" }, { "type": "hide", "char": "player" },
+      { "type": "music", "track": "waves_night" },
+      { "type": "bg", "name": "beach_house_night" },
+      { "type": "camera", "effect": "fade", "to": "clear" },
+      { "type": "narrate", "text": "The old house sits where the Lekki road gives up and turns into sand. NEPA has taken the light, as usual. A single lantern swings at the gate." },
+      { "type": "show", "char": "player", "position": "left", "expression": "nervous" },
+      { "type": "show", "char": "sade", "position": "center", "expression": "neutral" },
+      { "type": "say", "char": "sade", "text": "So you came. Eh-heh. I wasn't sure you would." },
+      { "type": "say", "char": "sade", "expression": "sad", "text": "She left something for you, {name}. Only you. Not your father. Not Uncle Femi. Nobody." },
+      { "type": "narrate", "text": "Sade holds out a brass key, green with age, and a letter folded small." },
+      { "type": "choice", "id": "key_choice", "prompt": "Grandma Abeni's last wish is in Sade's hands.", "options": [
+        { "id": "take_key", "text": "Take the key and the letter.", "summary": "You accepted Grandma Abeni's key.",
+          "effects": [ { "type": "item", "id": "mysterious_key" }, { "type": "item", "id": "grandma_letter" }, { "type": "flag", "key": "hasKey" } ],
+          "then": [ { "type": "sfx", "name": "door" }, { "type": "narrate", "text": "The key is heavier than it looks." } ] },
+        { "id": "letter_only", "text": "Take the letter only. \"I'm not ready for the key.\"", "summary": "You left Grandma's key with Sade, for now.",
+          "effects": [ { "type": "item", "id": "grandma_letter" }, { "type": "flag", "key": "leftKey" }, { "type": "rel", "char": "sade", "stat": "trust", "delta": 3 }, { "type": "stat", "stat": "courage", "delta": -2 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "nervous", "text": "Keep the key a little longer, Sade. I'm not ready." }, { "type": "say", "char": "sade", "expression": "sad", "text": "She said you would say that." } ] }
+      ] },
+      { "type": "choice", "id": "read_letter", "prompt": "The letter trembles in your hand.", "options": [
+        { "id": "read_now", "text": "Read it now, by lantern light.", "summary": "You read Grandma Abeni's letter right away.",
+          "effects": [ { "type": "flag", "key": "knowsSecret" }, { "type": "stat", "stat": "courage", "delta": 3 } ],
+          "then": [
+            { "type": "narrate", "text": "\"My dear one. If you are reading this, the house still stands, and so do you.\"" },
+            { "type": "narrate", "text": "\"Do not sell. What your grandfather and old Chief Bakare buried behind the boat house in 1989 is not theirs to sell, and it is not yours to forget.\"" },
+            { "type": "narrate", "text": "\"Tell no Bakare. Trust Adaeze. — Abeni\"" },
+            { "type": "say", "char": "sade", "expression": "nervous", "text": "Whatever it says... I only carried it, okay?" } ] },
+        { "id": "read_later", "text": "Fold it away. Some truths can wait one more night.", "summary": "You decided to save the letter for later.",
+          "effects": [ { "type": "flag", "key": "unreadLetter" } ],
+          "then": [ { "type": "narrate", "text": "You slide the letter into your pocket. It feels like it's burning." } ] }
+      ] },
+      { "type": "jump", "scene": "invite_intro" }
+    ] },
+
+    { "id": "invite_intro", "steps": [
+      { "type": "camera", "effect": "fade", "to": "black", "wait": 800 },
+      { "type": "hide", "char": "sade" }, { "type": "hide", "char": "player" },
+      { "type": "music", "track": "quiet" },
+      { "type": "bg", "name": "beach_house_morning" },
+      { "type": "camera", "effect": "fade", "to": "clear" },
+      { "type": "narrate", "text": "Morning. Generator noise, sea breeze, and somebody banging on the gate like a debt collector." },
+      { "type": "show", "char": "player", "position": "left", "expression": "neutral" },
+      { "type": "show", "char": "zainab", "position": "right", "expression": "happy", "enter": "right" },
+      { "type": "say", "char": "zainab", "text": "Is this the famous {name}? I'm Zainab! I do events, music, and wahala. In that order." },
+      { "type": "say", "char": "zainab", "expression": "confident", "text": "Tonight: Sunset Sessions on the beach. Amapiano, jollof, a generator that has never failed me. And you, my dear, will be there." },
+      { "type": "jump", "scene": "invite_choice" }
+    ] },
+
+    { "id": "invite_choice", "steps": [
+      { "type": "choice", "id": "invite", "prompt": "Zainab is not leaving without an answer.", "options": [
+        { "id": "accept", "text": "\"I'm in.\"", "summary": "You said yes to Zainab's beach party.", "goto": "party",
+          "effects": [ { "type": "flag", "key": "goingParty" }, { "type": "rel", "char": "zainab", "stat": "friendship", "delta": 6 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "happy", "text": "I'm in." }, { "type": "say", "char": "zainab", "expression": "happy", "text": "Beautiful! Wear something you can sweat in." } ] },
+        { "id": "refuse_party", "text": "\"I'm here to grieve, not to party.\"", "summary": "You turned down the party.", "goto": "quiet_night",
+          "effects": [ { "type": "flag", "key": "skippedParty" }, { "type": "rel", "char": "zainab", "stat": "friendship", "delta": -3 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "sad", "text": "I'm here to grieve, not to party." }, { "type": "say", "char": "zainab", "expression": "sad", "text": "I understand. But the sea doesn't judge. If you change your mind." } ] },
+        { "id": "ask_guests", "text": "\"Who else is going?\"", "goto": "invite_choice", "hidden": true,
+          "requires": { "flag": "knowsGuestList", "is": false },
+          "effects": [ { "type": "flag", "key": "knowsGuestList" }, { "type": "rel", "char": "zainab", "stat": "trust", "delta": 3 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "confident", "text": "Who else is going?" }, { "type": "say", "char": "zainab", "expression": "nervous", "text": "Everyone. Adaeze. Tunde and his people. And a few faces you won't expect." } ] }
+      ] }
+    ] },
+
+    { "id": "party", "steps": [
+      { "type": "camera", "effect": "fade", "to": "black", "wait": 700 },
+      { "type": "hide", "char": "zainab" }, { "type": "hide", "char": "player" },
+      { "type": "music", "track": "party" },
+      { "type": "bg", "name": "beach_party" },
+      { "type": "camera", "effect": "fade", "to": "clear" },
+      { "type": "narrate", "text": "By sunset the beach has become a different country. Log drums, fairy lights, and the whole of Lekki pretending it has no problems." },
+      { "type": "show", "char": "player", "position": "left", "expression": "happy" },
+      { "type": "show", "char": "zainab", "position": "center", "expression": "happy" },
+      { "type": "say", "char": "zainab", "text": "Welcome to the only place in Lagos that never loses light. We have generator!" },
+      { "type": "show", "char": "adaeze", "position": "right", "expression": "happy", "enter": "right" },
+      { "type": "say", "char": "adaeze", "expression": "happy", "if": { "flag": "refusedOffer" }, "text": "I told everyone you'd refuse that envelope. Zainab owes me five thousand naira." },
+      { "type": "say", "char": "adaeze", "expression": "nervous", "if": { "flag": "tookOffer" }, "text": "So... you took the envelope. I'm not judging. I'm just... noticing." },
+      { "type": "say", "char": "adaeze", "expression": "happy", "if": { "all": [ { "flag": "refusedOffer", "is": false }, { "flag": "tookOffer", "is": false } ] }, "text": "You came! I was starting to think the sea swallowed you." },
+      { "type": "choice", "id": "party_moment", "prompt": "The night is yours.", "options": [
+        { "id": "dance", "text": "Dance with Adaeze", "premium": true, "summary": "You danced with Adaeze under the fairy lights.",
+          "effects": [ { "type": "rel", "char": "adaeze", "stat": "romance", "delta": 8 }, { "type": "rel", "char": "adaeze", "stat": "friendship", "delta": 2 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "confident", "text": "Dance with me?" }, { "type": "say", "char": "adaeze", "expression": "embarrassed", "text": "Ah! Okay, okay. But if you step on my foot, we are no longer friends." }, { "type": "narrate", "text": "For three songs, the whole city disappears." } ] },
+        { "id": "help_dj", "text": "Help Zainab when the speakers cut out", "summary": "You saved Zainab's set when the speakers died.",
+          "effects": [ { "type": "stat", "stat": "reputation", "delta": 5 }, { "type": "rel", "char": "zainab", "stat": "friendship", "delta": 5 } ],
+          "then": [ { "type": "sfx", "name": "door" }, { "type": "narrate", "text": "The music dies mid-beat. You find a loose cable behind the speaker stack and push it back in. The crowd roars." }, { "type": "say", "char": "zainab", "expression": "surprised", "text": "You? On my equipment? ...Okay. You can stay." } ] },
+        { "id": "shore", "text": "Slip away to the shoreline", "summary": "You noticed a torch moving inside the boat house.",
+          "effects": [ { "type": "flag", "key": "sawTorchlight" }, { "type": "stat", "stat": "courage", "delta": 2 } ],
+          "then": [ { "type": "narrate", "text": "Past the lights, the sea is quiet. Down the beach, the boat house stands dark, except for a thin torch beam sliding behind its window." } ] }
+      ] },
+      { "type": "jump", "scene": "party_tunde" }
+    ] },
+
+    { "id": "party_tunde", "steps": [
+      { "type": "hide", "char": "zainab" },
+      { "type": "music", "track": "tense" },
+      { "type": "narrate", "text": "The music dips for half a second, the way it does when somebody important walks in." },
+      { "type": "show", "char": "tunde", "position": "center", "expression": "confident", "enter": "right" },
+      { "type": "camera", "effect": "zoom", "amount": 1.15 },
+      { "type": "say", "char": "tunde", "text": "A word, {name}. Alone." },
+      { "type": "say", "char": "adaeze", "expression": "angry", "if": { "rel": "adaeze", "stat": "trust", "op": ">=", "value": 20 }, "text": "Anything you say to {name}, you say in front of me." },
+      { "type": "say", "char": "adaeze", "expression": "nervous", "if": { "rel": "adaeze", "stat": "trust", "op": "<", "value": 20 }, "text": "I'll... be over there." },
+      { "type": "choice", "id": "tunde_talk", "prompt": "Tunde is waiting.", "options": [
+        { "id": "follow", "text": "Follow Tunde to the dock.", "summary": "You heard Tunde out in private.",
+          "effects": [ { "type": "rel", "char": "tunde", "stat": "trust", "delta": 4 }, { "type": "rel", "char": "adaeze", "stat": "trust", "delta": -4 }, { "type": "flag", "key": "followedTunde" } ],
+          "then": [ { "type": "say", "char": "tunde", "expression": "confident", "text": "Smart. My father respects people who listen." }, { "type": "narrate", "text": "On the dock, Tunde triples the price. You can almost hear your grandmother laughing in the waves." } ] },
+        { "id": "in_front", "text": "\"Say it in front of Adaeze.\"", "summary": "You refused to talk behind Adaeze's back.",
+          "effects": [ { "type": "rel", "char": "adaeze", "stat": "trust", "delta": 8 }, { "type": "rel", "char": "tunde", "stat": "rivalry", "delta": 5 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "confident", "text": "Whatever you want to say, say it in front of Adaeze." }, { "type": "say", "char": "tunde", "expression": "angry", "text": "...Fine. Another day." } ] },
+        { "id": "secret", "text": "\"What did our grandfathers bury, Tunde?\"", "hidden": true, "requires": { "flag": "knowsSecret" },
+          "summary": "You confronted Tunde about the secret behind the boat house.",
+          "effects": [ { "type": "flag", "key": "confrontedTunde" }, { "type": "stat", "stat": "courage", "delta": 5 }, { "type": "rel", "char": "tunde", "stat": "rivalry", "delta": 10 }, { "type": "rel", "char": "tunde", "stat": "trust", "delta": -5 }, { "type": "rel", "char": "adaeze", "stat": "trust", "delta": 3 } ],
+          "then": [ { "type": "say", "char": "player", "expression": "angry", "text": "What did our grandfathers bury behind that boat house, Tunde?" }, { "type": "camera", "effect": "shake" }, { "type": "say", "char": "tunde", "expression": "surprised", "text": "Who told you— " }, { "type": "say", "char": "adaeze", "expression": "surprised", "text": "Buried? Buried what?" } ] }
+      ] },
+      { "type": "camera", "effect": "reset" },
+      { "type": "hide", "char": "tunde", "exit": "right" },
+      { "type": "jump", "scene": "party_end" }
+    ] },
+
+    { "id": "party_end", "steps": [
+      { "type": "music", "track": "waves_night" },
+      { "type": "narrate", "text": "Later, when the speakers finally rest, Adaeze walks you down the sand." },
+      { "type": "narrate", "if": { "rel": "adaeze", "stat": "trust", "op": ">=", "value": 20 }, "text": "Adaeze trusts you. It shows in the way she lets her shoulder touch yours." },
+      { "type": "say", "char": "adaeze", "expression": "happy", "if": { "rel": "adaeze", "stat": "trust", "op": ">=", "value": 20 }, "text": "Whatever Grandma left you, whatever Tunde wants, you're not doing it alone. You hear me?" },
+      { "type": "narrate", "if": { "rel": "adaeze", "stat": "trust", "op": "<", "value": 20 }, "text": "Adaeze keeps her distance. The sand between you feels wider than the sea." },
+      { "type": "say", "char": "adaeze", "expression": "sad", "if": { "rel": "adaeze", "stat": "trust", "op": "<", "value": 20 }, "text": "I don't know if I know you anymore, {name}." },
+      { "type": "jump", "scene": "boathouse" }
+    ] },
+
+    { "id": "quiet_night", "steps": [
+      { "type": "camera", "effect": "fade", "to": "black", "wait": 800 },
+      { "type": "hide", "char": "zainab" },
+      { "type": "music", "track": "quiet" },
+      { "type": "bg", "name": "beach_house_night" },
+      { "type": "camera", "effect": "fade", "to": "clear" },
+      { "type": "narrate", "text": "You stay in. The sea is loud tonight. So is the silence." },
+      { "type": "show", "char": "sade", "position": "center", "expression": "neutral" },
+      { "type": "say", "char": "sade", "text": "You didn't go to the party. Good. Sit. Let me tell you what Grandma never told your father." },
+      { "type": "say", "char": "sade", "expression": "sad", "text": "Chief Bakare's father owed Grandma Abeni his life. She kept quiet for thirty years. Now the son wants the land." },
+      { "type": "say", "char": "sade", "expression": "nervous", "text": "Something is buried behind the boat house. I don't know what. I only know she checked that door every Sunday." },
+      { "type": "effects", "effects": [ { "type": "flag", "key": "knowsSecret" } ] },
+      { "type": "sfx", "name": "door" },
+      { "type": "show", "char": "adaeze", "position": "right", "expression": "happy", "enter": "right" },
+      { "type": "say", "char": "adaeze", "expression": "happy", "text": "You didn't come to the party, so the party came to you." },
+      { "type": "narrate", "text": "She is carrying a foil pack of party jollof and two plastic spoons. You eat on the steps, laughing for the first time since you landed." },
+      { "type": "effects", "effects": [ { "type": "rel", "char": "adaeze", "stat": "friendship", "delta": 5 }, { "type": "rel", "char": "adaeze", "stat": "trust", "delta": 8 } ] },
+      { "type": "say", "char": "adaeze", "expression": "surprised", "text": "Wait. Is that a torch at the boat house?" },
+      { "type": "jump", "scene": "boathouse" }
+    ] },
+
+    { "id": "boathouse", "steps": [
+      { "type": "camera", "effect": "fade", "to": "black", "wait": 800 },
+      { "type": "hide", "char": "sade" }, { "type": "hide", "char": "tunde" }, { "type": "hide", "char": "zainab" },
+      { "type": "music", "track": "tense" },
+      { "type": "bg", "name": "boathouse_exterior" },
+      { "type": "camera", "effect": "fade", "to": "clear" },
+      { "type": "narrate", "text": "The boat house leans over the water like it's listening. The padlock is gone. Only the blue door remains: paint peeling, salt-bitten, patient." },
+      { "type": "show", "char": "player", "position": "left", "expression": "nervous" },
+      { "type": "show", "char": "adaeze", "position": "right", "expression": "nervous" },
+      { "type": "narrate", "if": { "flag": "unreadLetter" }, "text": "Hands shaking, you finally unfold Grandma's letter by torchlight. Do not sell. Tell no Bakare. Trust Adaeze." },
+      { "type": "effects", "if": { "flag": "unreadLetter" }, "effects": [ { "type": "flag", "key": "knowsSecret" }, { "type": "rel", "char": "adaeze", "stat": "trust", "delta": 3 } ] },
+      { "type": "say", "char": "adaeze", "expression": "nervous", "text": "So this is it? Whatever she was protecting?" },
+      { "type": "jump", "scene": "ending_together", "if": { "all": [ { "item": "mysterious_key" }, { "rel": "adaeze", "stat": "trust", "op": ">=", "value": 20 } ] } },
+      { "type": "jump", "scene": "ending_alone", "if": { "item": "mysterious_key" } },
+      { "type": "jump", "scene": "ending_locked" }
+    ] },
+
+    { "id": "ending_together", "steps": [
+      { "type": "narrate", "text": "The key turns on the second try. The door breathes out thirty years of stale air." },
+      { "type": "sfx", "name": "door" },
+      { "type": "bg", "name": "boathouse_inside" },
+      { "type": "music", "track": "quiet" },
+      { "type": "narrate", "text": "Inside: a rusted tin trunk. A ledger. Photographs. And one picture on top that makes Adaeze stop breathing." },
+      { "type": "effects", "effects": [ { "type": "item", "id": "old_photograph" }, { "type": "flag", "key": "sawPhoto" } ] },
+      { "type": "say", "char": "adaeze", "expression": "surprised", "text": "That's my mother. With your grandmother. And old Chief Bakare. Why is my mother in this photo?" },
+      { "type": "narrate", "text": "On the back, in Grandma Abeni's careful hand: \"The three who kept the secret. Only two are left.\"" },
+      { "type": "say", "char": "player", "expression": "nervous", "text": "Adaeze... who's the third?" },
+      { "type": "sfx", "name": "car" },
+      { "type": "camera", "effect": "flash" },
+      { "type": "narrate", "text": "Headlights sweep across the water. A car door slams. Someone is walking toward the boat house, unhurried, like he owns the place." },
+      { "type": "end", "title": "Episode 1 Complete", "text": "You opened the door together. Whatever comes next, you won't face it alone." }
+    ] },
+
+    { "id": "ending_alone", "steps": [
+      { "type": "say", "char": "adaeze", "expression": "sad", "text": "I'll... stand guard out here. It's your family's secret, not mine." },
+      { "type": "hide", "char": "adaeze" },
+      { "type": "narrate", "text": "The key turns. The door opens on darkness, salt, and the smell of old paper." },
+      { "type": "sfx", "name": "door" },
+      { "type": "bg", "name": "boathouse_inside" },
+      { "type": "music", "track": "quiet" },
+      { "type": "narrate", "text": "A tin trunk. A ledger. A photograph of three people: Grandma Abeni, Chief Bakare's father, and a woman whose face you almost recognize." },
+      { "type": "effects", "effects": [ { "type": "item", "id": "old_photograph" } ] },
+      { "type": "sfx", "name": "horn" },
+      { "type": "narrate", "text": "Your phone buzzes. An unknown number. One message: \"Leave it. And don't trust her.\"" },
+      { "type": "end", "title": "Episode 1 Complete", "text": "You opened the door alone. Now you wonder who was really standing behind it." }
+    ] },
+
+    { "id": "ending_locked", "steps": [
+      { "type": "narrate", "text": "The padlock is gone, but there's a second lock beneath it. Brass. Old. And you don't have the key." },
+      { "type": "say", "char": "adaeze", "expression": "sad", "text": "Maybe Sade still has it. We should go back." },
+      { "type": "sfx", "name": "car" },
+      { "type": "camera", "effect": "flash" },
+      { "type": "show", "char": "tunde", "position": "center", "expression": "confident", "enter": "right" },
+      { "type": "say", "char": "tunde", "text": "Thank you for bringing us here, {name}. Some doors only open when the family is standing in front of them." },
+      { "type": "narrate", "text": "Two men with a locksmith's bag step out of the dark behind him." },
+      { "type": "end", "title": "Episode 1 Complete", "text": "Tunde got there first. The blue door won't stay closed for long." }
+    ] }
+  ]
+}

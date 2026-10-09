@@ -1,0 +1,56 @@
+{
+  "id": "the-last-summer",
+  "title": "The Last Summer",
+  "tagline": "One long holiday. One blue door. A city that remembers everything.",
+  "setting": "Lagos, Nigeria",
+  "genre": ["Drama", "Mystery", "Romance"],
+  "tags": ["featured", "popular", "new"],
+  "characters": {
+    "adaeze": {
+      "name": "Adaeze Okafor", "color": "#ff9f1c",
+      "description": "Your oldest friend. Sharp tongue, soft heart, camera always around her neck.",
+      "personality": "Loyal, witty, stubborn",
+      "appearance": { "skin": "#6b4226", "hair": "braids", "hairColor": "#15110f", "eyes": "#2b1b12", "brows": "arched", "face": "oval", "outfit": "ankara", "outfitColor": "#e07a1f", "accessory": "earrings" },
+      "startRelationship": { "friendship": 20, "trust": 10 },
+      "hiddenStats": ["romance"]
+    },
+    "tunde": {
+      "name": "Tunde Bakare", "color": "#4dabf7",
+      "description": "Once your best friend. Now the polished face of his father's property empire.",
+      "personality": "Charming, calculating, guarded",
+      "appearance": { "skin": "#4a2c17", "hair": "fade", "hairColor": "#15110f", "eyes": "#2b1b12", "brows": "thick", "face": "square", "outfit": "kaftan", "outfitColor": "#212529", "accessory": "chain" },
+      "startRelationship": { "rivalry": 15 },
+      "hiddenStats": ["trust"]
+    },
+    "zainab": {
+      "name": "Zainab Danjuma", "color": "#f06595",
+      "description": "Event planner, part-time DJ, full-time connector. Knows everybody. Tells half of what she knows.",
+      "personality": "Bold, funny, secretly observant",
+      "appearance": { "skin": "#8d5a3b", "hair": "gele", "hairColor": "#d6336c", "eyes": "#5a3a1e", "brows": "soft", "face": "round", "outfit": "dress", "outfitColor": "#2f9e44", "accessory": "earrings" },
+      "hiddenStats": ["trust"]
+    },
+    "sade": {
+      "name": "Folasade 'Sade' Adeyemi", "color": "#b197fc",
+      "description": "Your cousin. Stayed behind to look after Grandma Abeni, and knows more than she says.",
+      "personality": "Quiet, loyal, burdened",
+      "appearance": { "skin": "#b9794a", "hair": "twists", "hairColor": "#3b2417", "eyes": "#2b1b12", "brows": "soft", "face": "oval", "outfit": "hoodie", "outfitColor": "#7048e8", "accessory": "glasses" },
+      "hiddenStats": ["rivalry"]
+    }
+  },
+  "items": {
+    "mysterious_key": { "name": "Grandma's Brass Key", "icon": "🗝️", "description": "Green with age. It has been turned every Sunday for thirty years." },
+    "grandma_letter": { "name": "Grandma Abeni's Letter", "icon": "✉️", "description": "Folded small. Written in a shaky hand." },
+    "bakare_offer": { "name": "The Bakare Envelope", "icon": "💼", "description": "Cream paper. A very large number." },
+    "old_photograph": { "name": "Old Photograph", "icon": "📷", "description": "Three people, one secret." }
+  },
+  "seasons": [
+    {
+      "id": "season-1", "title": "Season 1",
+      "episodes": [
+        { "id": "ep1", "title": "Welcome Back to Lagos", "description": "You land in Lagos for the first time in four years, just in time to lose your grandmother's house.", "file": "episode-1.json", "published": true },
+        { "id": "ep2", "title": "The Blue Door", "description": "Whatever was buried behind the boat house is about to be dug up.", "published": false },
+        { "id": "ep3", "title": "Harmattan", "description": "The dry wind brings dust, and old debts.", "published": false }
+      ]
+    }
+  ]
+}

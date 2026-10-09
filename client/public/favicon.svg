@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#a3216b"/>
+      <stop offset="45%" stop-color="#3b1c6b"/>
+      <stop offset="100%" stop-color="#0b0f1a"/>
+    </radialGradient>
+    <linearGradient id="sun" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffd166"/>
+      <stop offset="50%" stop-color="#ffb703"/>
+      <stop offset="100%" stop-color="#ff7a3d"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff7a3d" stop-opacity="0.6"/>
+      <stop offset="30%" stop-color="#1b1440"/>
+      <stop offset="100%" stop-color="#0b0f1a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <rect width="512" height="512" rx="128" fill="url(#bg)"/>
+
+  <!-- Glowing Sun -->
+  <circle cx="256" cy="230" r="110" fill="url(#sun)" filter="drop-shadow(0 0 30px rgba(255, 183, 3, 0.6))"/>
+
+  <!-- Sun Reflection / Waves -->
+  <path d="M 0 330 Q 128 320 256 330 T 512 330 L 512 512 L 0 512 Z" fill="url(#sea)"/>
+
+  <!-- Palm Tree Silhouette -->
+  <g fill="#0b0f1a" stroke="#0b0f1a">
+    <!-- Trunk -->
+    <path d="M 170 420 Q 190 320 225 240 Q 235 242 233 248 Q 200 325 182 420 Z"/>
+    
+    <!-- Leaves -->
+    <path d="M 225 245 Q 160 210 110 240 Q 155 250 225 247 Z"/>
+    <path d="M 225 245 Q 170 170 130 180 Q 175 210 225 245 Z"/>
+    <path d="M 225 245 Q 230 150 250 140 Q 255 190 227 245 Z"/>
+    <path d="M 225 245 Q 300 170 330 200 Q 285 220 227 246 Z"/>
+    <path d="M 225 245 Q 310 230 340 270 Q 290 270 227 247 Z"/>
+  </g>
+</svg>
