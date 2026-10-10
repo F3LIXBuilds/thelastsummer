@@ -9,7 +9,6 @@ export default function Profile() {
   const nav = useNavigate();
   return (
     <main className="page narrow">
-      <header className="topbar"><Link to="/home">← Home</Link></header>
       <section className="hero"><Avatar appearance={profile.appearance} expression="happy" />
         <div><h1 className="display">{profile.displayName}</h1><p className="muted">@{user.username} · {profile.pronouns}</p><Link className="btn ghost" to="/create">Edit character</Link></div></section>
 

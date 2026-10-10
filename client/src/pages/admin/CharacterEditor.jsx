@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Avatar from '../../game/Avatar.jsx';
+import Figure from '../../game/Figure.jsx';
 import AvatarCustomizer from '../../game/AvatarCustomizer.jsx';
 import { DEFAULT_APPEARANCE, REL_STATS, REL_LABELS } from '../../game/constants.js';
 
@@ -42,6 +43,7 @@ export default function CharacterEditor({ characters, onChange }) {
     if (!next[stat]) delete next[stat];
     update({ startRelationship: next });
   };
+  const setPortraitName = (v) => update({ portrait: v.trim().toLowerCase() });
   const toggleHidden = (stat) => {
     const h = c.hiddenStats ?? [];
     update({ hiddenStats: h.includes(stat) ? h.filter((x) => x !== stat) : [...h, stat] });
@@ -68,13 +70,15 @@ export default function CharacterEditor({ characters, onChange }) {
         <div className="char-form stack">
           <p className="muted">Script id: <code>{sel}</code> (fixed, because scripts refer to it)</p>
           <div className="char-top">
-            <div className="char-preview"><Avatar appearance={c.appearance} expression={expr} /></div>
+            <div className="char-preview"><Figure def={c} expression={expr} /></div>
             <div className="stack" style={{ flex: 1 }}>
               <input className="input" value={c.name} placeholder="Full name" onChange={(e) => update({ name: e.target.value })} />
               <label className="row">Name colour in dialogue
                 <input type="color" value={/^#[0-9a-f]{6}$/i.test(c.color) ? c.color : '#ffffff'} onChange={(e) => update({ color: e.target.value })} />
               </label>
               <input className="input" value={c.personality} placeholder="Personality (e.g. Loyal, witty, stubborn)" onChange={(e) => update({ personality: e.target.value })} />
+              <input className="input" value={c.portrait ?? ''} placeholder="Portrait image name (optional, e.g. adaeze)"
+                onChange={(e) => setPortraitName(e.target.value)} />
               <textarea className="json" rows={3} value={c.description} placeholder="Description shown on the Cast tab" onChange={(e) => update({ description: e.target.value })} />
             </div>
           </div>

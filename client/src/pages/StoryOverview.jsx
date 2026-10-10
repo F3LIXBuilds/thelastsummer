@@ -38,8 +38,7 @@ export default function StoryOverview() {
 
   return (
     <main className="page">
-      <header className="topbar"><Link to="/home">← Home</Link></header>
-      <section className="overview-hero">
+      <section className="overview-hero cover-hero" style={{ '--cover': `url(/api/media/cover_${story.id})` }}>
         <p className="eyebrow">{story.genre.join(' · ')} · {story.setting}</p>
         <h1 className="display huge">{story.title}</h1>
         <p className="lede">{story.tagline}</p>

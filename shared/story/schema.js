@@ -78,6 +78,7 @@ export const Appearance = z.object({
 });
 export const Character = z.object({
   name: z.string(), color: z.string(), description: z.string(), personality: z.string(),
+  portrait: z.string().max(40).default(''),
   appearance: Appearance,
   startRelationship: z.record(z.number()).default({}),
   hiddenStats: z.array(z.enum(REL_STATS)).default([]),

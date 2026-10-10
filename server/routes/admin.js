@@ -145,12 +145,12 @@ r.get('/media', ah(async (_req, res) => {
 
 r.post('/media', ah(async (req, res) => {
   const b = z.object({
-    name: z.string().regex(/^[a-z0-9_-]{2,40}$/, 'use lowercase letters, numbers, _ or -'),
+    name: z.string().regex(/^[a-z0-9_-]{2,60}$/, 'use lowercase letters, numbers, _ or -'),
     mime: z.enum(['image/png', 'image/jpeg', 'image/webp']),
     data: z.string().min(1),
   }).parse(req.body);
   const buf = Buffer.from(b.data, 'base64');
-  if (!buf.length || buf.length > 1_500_000) return res.status(400).json({ error: 'Image must be under 1.5 MB' });
+  if (!buf.length || buf.length > 2_000_000) return res.status(400).json({ error: 'Image must be under 2 MB' });
   await query(
     `INSERT INTO media (name, mime, data, size) VALUES ($1,$2,$3,$4)
      ON CONFLICT (name) DO UPDATE SET mime = EXCLUDED.mime, data = EXCLUDED.data, size = EXCLUDED.size`,
