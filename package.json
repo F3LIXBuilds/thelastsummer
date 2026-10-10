@@ -13,7 +13,8 @@
     "admin:promote": "node server/scripts/promote-admin.js",
     "validate:stories": "node shared/story/validate.js",
     "story:export": "node shared/story/cli.js export",
-    "story:build": "node shared/story/cli.js build"
+    "story:build": "node shared/story/cli.js build",
+    "content:sync": "node server/scripts/sync-content.js"
   },
   "dependencies": {
     "zod": "^3.23.8"
