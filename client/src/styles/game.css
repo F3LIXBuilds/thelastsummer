@@ -499,3 +499,13 @@ h2 { font-family: var(--display); font-size: clamp(1.2rem, 4vw, 1.4rem); margin-
 /* keep dense thumbnail grids still */
 .expr-strip .avatar *, .char-list .avatar *, .cast-card .avatar *, .cast-row .avatar * { animation: none !important; }
 
+/* ---------- Character lighting ---------- */
+.preview {
+  background:
+    radial-gradient(60% 55% at 50% 40%, rgba(255, 190, 120, .24), transparent 70%),
+    radial-gradient(100% 70% at 50% 0%, #3b1c6b, var(--bg));
+}
+.preview .avatar { filter: drop-shadow(0 18px 26px rgba(0, 0, 0, .5)); }
+.actor .avatar { filter: drop-shadow(-5px 0 12px rgba(255, 190, 120, .16)); }
+
+
